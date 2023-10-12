@@ -45,6 +45,55 @@ To process a specific VM, exclude certain VMs, and specify an output directory:
 Export-MachineInfo -ExcelFilePath "path_to_your_excel_file.xlsx" -VMIndex 3 -OutputDir "path_to_output_directory" -ExcludePoweredOff -ExcludeTemplates -ExcludeSRM -VerboseLogging
 ```
 
+## Examples of Usage
+
+### Example 1: Basic Usage
+Export data for all VMs from the RVTools Excel file and save the CSV files to the default output directory ("./Output").
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx"
+```
+
+### Example 2: Specify Output Directory
+Export data for all VMs and save the CSV files to a custom output directory.
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx" -OutputDir "C:\custom\output\directory"
+```
+
+### Example 3: Process a Specific VM
+Export data only for the VM represented by the 3rd row in the "vInfo" sheet.
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx" -VMIndex 3
+```
+
+### Example 4: Exclude Specific VMs
+Export data for all VMs, excluding those that are powered off, templates, or SRM placeholders.
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx" -ExcludePoweredOff -ExcludeTemplates -ExcludeSRM
+```
+
+### Example 5: Verbose Logging
+Export data for all VMs with verbose logging enabled to view detailed processing logs in the console.
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx" -VerboseLogging
+```
+
+### Example 6: Combine Parameters
+Export data only for the VM represented by the 5th row in the "vInfo" sheet, exclude it if it’s powered off or a template, save the CSV to a custom output directory, and enable verbose logging.
+
+```PowerShell
+Export-MachineInfo -ExcelFilePath "C:\path\to\your\RVTools_output.xlsx" -VMIndex 5 -OutputDir "C:\custom\output\directory" -ExcludePoweredOff -ExcludeTemplates -VerboseLogging
+```
+
+## Notes
+- Ensure to adjust the file paths in the examples as per your system.
+- Ensure that the RVTools Excel file is not open in Excel during the script execution to avoid file access issues.
+
+
 ## Detailed Workflow
 
 1. **Import Excel Data**: All sheets from the specified Excel file are imported into PowerShell using the `ImportExcel` module.
